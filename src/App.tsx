@@ -1,35 +1,56 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useEffect, useState } from "react";
+import './App.css'
+import { CharacterCard } from "./components/CharacterCard";
+import type { CharacterT } from "./types";
+import { api } from "./api/api";
+
+const App = () => {
+  const [characters, setCharacters] = useState<CharacterT[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [name, setName] = useState<string>("");
+  const [finalName, setFinalName] = useState<string>("");
+
+
+  const fetchCharacters = async (name: string) => {
+    setLoading(true);
+    await api
+      .get(`/character/${name ? "?name=" + name : ""}`)
+      .then((e) => setCharacters(e.data.results))
+      .catch((e) => {
+        setError(`Error al obtener los datos: ${e}`);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    fetchCharacters(finalName);
+  }, [finalName]);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <input
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+        }}
+      />
+      <button
+        onClick={() => {
+          setFinalName(name);
+        }}
+      >
+        Search
+      </button>
+      {loading && <h2>Loading...</h2>}
+      {error && <h3>Error: {error}</h3>}
+      {!loading &&
+        characters.map((e) => <Character key={e.id} character={e} />)}
     </>
-  )
-}
+  );
+};
 
 export default App

@@ -1,2 +1,2 @@
-# Practicas_web_2526
-Repositorio para las prácticas de programacion de interfaces web 2025-2026
+Paso 1 Asegurarse de que tienes npm instalado : npm install en la carpeta Practicas_web_1
+Paso 2 npm run dev en mismo directorio para que la aplicacion se ejecute y te saque el localhost donde ver los cambios

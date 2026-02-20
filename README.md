@@ -14,7 +14,7 @@ De nuevo reitero que esta práctica se ha hecho en un codespace de github (cada 
 Una vez todo este instalado en el espacio de código, en la misma altura mencionada anteriormente se hace npm run dev y abrir en una ventana web el localhost que imprime por pantalla al ejecutarse
 
 ## Comprobaciones de estados no estándar: Loader y Error
-Para el Loader puede actualizar la página del localhost y durante un breve momento podra ver el mensaje de cargando personajes, o cada vez que le de a el botón "Siguiente Página" abajo a la izquierda saldrá el mensaje durante un instante
+Para el Loader puede actualizar la página del localhost y durante un breve momento podra ver el mensaje de cargando personajes, o cada vez que le de a el botón "Siguiente Página" abajo a la izquierda saldrá el mensaje durante un instante<br/>
 <img width="657" height="354" alt="image" src="https://github.com/user-attachments/assets/e49ee9b9-a71e-4244-86c4-24b50345742e" />
-Para el Error puede cambiarse la direccion web de la api en /src/api/api.ts , borrando por ejemplo la i final de "https://swapi.dev/api" y saldrá el mensaje de error (es necesario recargar la página del localhost para ver los cambios)
+Para el Error puede cambiarse la direccion web de la api en /src/api/api.ts , borrando por ejemplo la i final de "https://swapi.dev/api" y saldrá el mensaje de error (es necesario recargar la página del localhost para ver los cambios)<br/>
 <img width="647" height="334" alt="image" src="https://github.com/user-attachments/assets/28c429f7-bbf7-49ed-9ccf-f0cc3d10e6b3" />
